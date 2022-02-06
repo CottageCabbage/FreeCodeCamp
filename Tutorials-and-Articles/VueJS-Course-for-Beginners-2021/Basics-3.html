@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vue 3 Basics</title>
+    <title>Vue 3 Basics ― Lifecycle Hooks</title>
     <style>
         .box {
             background-color: purple;
@@ -23,7 +23,7 @@
         <input @keyup.enter="greet(greeting + '!!!!!!!!')" v-model="greeting"/>
 
         <hr>
-        <button @click.right.prevent="toogleBox">Toogle Box</button>
+        <button @click="toogleBox">Toogle Box</button>
         <div v-if="isVisible" class="box"></div>
     </div>
     
