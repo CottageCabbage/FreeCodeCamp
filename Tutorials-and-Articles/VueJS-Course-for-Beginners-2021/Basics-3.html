@@ -19,12 +19,10 @@
 <body>
     <div id="app" v-cloak>
         {{greeting}}
-
-        <input @keyup.enter="greet(greeting + '!!!!!!!!')" v-model="greeting"/>
-
         <hr>
         <button @click="toogleBox">Toogle Box</button>
-        <div v-if="isVisible" class="box"></div>
+        <!-- <div v-if="isVisible" class="box"></div> -->
+        <test-box v-if="isVisible"/>
     </div>
     
     <script src="https://unpkg.com/vue@next"></script>
@@ -45,6 +43,26 @@
                 greet(greeting) {
                     console.log(greeting)
                 }
+            },
+
+            updated() {
+                console.log('Updated')
+            }
+        })
+
+        app.component('test-box', {
+            template: `
+                <div class="box"></div>
+            `,
+
+            created() {
+                console.log('Created')
+            },
+            mounted() {
+                console.log('Mounted')
+            },
+            unmounted() {
+                console.log('Unmounted')
             }
         })
         app.mount('#app')

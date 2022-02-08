@@ -1,5 +1,5 @@
 **Course:** https://youtu.be/FXpIoQ_rT_c
-Progress ― 1:07:00
+Progress ― 1:17:00
 
 ---
 Vue CDN
