@@ -1,5 +1,5 @@
 **Course:** https://youtu.be/FXpIoQ_rT_c
-Progress ― 1:17:00
+Progress ― 2:01:00
 
 ---
 Vue CDN
@@ -8,3 +8,7 @@ Vue CDN
 + Registering components (to use component in component) | 41:00 | v-bind:
 + modelValue | 50:00 
 + this.$emit | 53:00   
+
+---
+### VUE CLI 
+2:26:00
