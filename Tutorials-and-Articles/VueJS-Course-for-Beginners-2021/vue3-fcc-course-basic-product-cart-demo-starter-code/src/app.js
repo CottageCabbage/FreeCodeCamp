@@ -9,7 +9,7 @@ let app = Vue.createApp({
     computed: {
       totalQuantity() {
         return Object.values(this.cart).reduce((acc, curr) => {
-          return acc + curr 
+          return acc + curr
         }, 0)
       }
     },
@@ -32,7 +32,7 @@ let app = Vue.createApp({
       const data = await res.json()
       this.inventory = data
     }
-  })  
+  })
 
   app.component('Sidebar', {
     props: ['toggle', 'cart', 'inventory', 'remove'],

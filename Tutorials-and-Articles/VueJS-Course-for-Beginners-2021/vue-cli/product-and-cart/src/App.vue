@@ -1,30 +1,65 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+  <header class="top-bar spread">
+    <nav class="top-bar-nav">-
+      <router-link to="/" class="top-bar-link">
+        <i class="icofont-spoon-and-fork"></i>
+        <span>Home</span>
+      </router-link>
+
+      <router-link to="/products" class="top-bar-link">
+        <span>Products</span>
+      </router-link>
+
+      <router-link to="/past-orders" class="top-bar-link">
+        <span>Past Orders</span>
+      </router-link>
+    </nav>
+
+    <!-- <router-link @click="toggleSidebar" class="top-bar-cart-link">
+      <i class="icofont-cart-alt icofont-1x"></i>
+      <span>Cart ({{ totalQuantity }})</span>
+    </router-link> -->
+  </header>
+
+  <router-view
+    :inventory="inventory"
+  />
+
+  <Sidebar
+    v-if="showSidebar"
+    :toggle="toggleSidebar"
+    :cart="cart"
+    :inventory="inventory"
+    :remove="removeItem"
+  />
+
 </template>
+<script>
+import food from '@/food.json'
+import Sidebar from '@/components/Sidebar.vue'
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+export default {
+  components: {
+    Sidebar
+  },
+  data () {
+    return {
+      inventory: food,
+      showSidebar: true
+    }
+  },
+  methods: {
+    addToCart (name, index) {
+      if (!this.cart[name]) { this.cart[name] = 0 }
+      this.cart[name] += this.inventory[index].quantity
+      this.inventory[index].quantity = 0
+    },
+    toggleSidebar () {
+      this.showSidebar = !this.showSidebar
+    },
+    removeItem (name) {
+      delete this.cart[name]
+    }
+  }
 }
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+</script>
